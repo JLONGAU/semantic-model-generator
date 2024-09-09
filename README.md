@@ -176,17 +176,13 @@ We offer a convenient Streamlit app that supports creating semantic models from 
 To install dependencies for the Streamlit app, run
 
 ```bash
-make setup_admin_app
+pip install -e . && pip install -r admin_apps/requirements.txt
 ```
 
-Once installed, you can run the app using the provided Makefile target, or with your current version of Python manually specified:
+Once installed, you can run the app using the following command
 
 ```bash
-# Make target
-make run_admin_app
-
-# directly
-python3.11 -m streamlit run admin_apps/app.py
+python -m streamlit run admin_apps/app.py
 ```
 
 ## CLI Tool
@@ -230,10 +226,10 @@ python -m semantic_model_generator.validate_model \
 
 ## Python
 
-You may also create/validate your semantic models from directly within your Python code. First, ensure that you have installed the Python package. Note, the version below should be the latest version under the `dist/` directory.
+You may also create/validate your semantic models from directly within your Python code. First, ensure that you have installed the Python package.
 
 ```bash
-pip install dist/*.whl
+pip install .
 ```
 
 ### Generation
@@ -463,9 +459,7 @@ You should follow the setup commands from usage-cli to install poetry and create
     * `poetry version major` - increments `x.0.0` to `(x+1).0.0`
 3. Update the `CHANGELOG.md` adding a relevant header for your version number along with a description of the changes
    made.
-4. Run `make build` to create a new .whl file.
-5. Push your files for approval.
-6. After approval, run `make release` which will cut a new release and attach the .whl file.
-7. Merge in your pr.
+4. Push your files for approval.
+5. Merge in your pr.
 
 - Note: If you `make release` does not trigger the GH action. Please delete the tag and push again.
